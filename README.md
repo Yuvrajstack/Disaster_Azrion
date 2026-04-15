@@ -2,14 +2,14 @@
 
 ---
 
-🌍 Disaster Classification Project
+ Disaster Classification Project
 
 This project focuses on building a machine learning and deep learning pipeline to classify disaster-related data. It combines both text-based classification and image-based classification techniques to improve prediction accuracy and provide a robust solution.
 
 
 ---
 
-📌 Overview
+ Overview
 
 The goal of this project is to:
 
@@ -25,9 +25,9 @@ Provide a complete workflow from data preprocessing to model evaluation
 
 ---
 
-🧠 Technologies Used
+ Technologies Used
 
-Python 🐍
+Python 
 
 Pandas & NumPy
 
@@ -43,9 +43,9 @@ PIL (Image Processing)
 
 ---
 
-⚙️ Features
+ Features
 
-🔤 Text Classification
+ Text Classification
 
 TF-IDF Vectorization
 
@@ -65,7 +65,7 @@ ROC-AUC
 
 
 
-🖼️ Image Classification
+ Image Classification
 
 Image preprocessing with ImageDataGenerator
 
@@ -88,8 +88,8 @@ TensorBoard logging
 
 ---
 
-📂 Project Structure
-
+ Project Structure
+ 
 ├── disaster-classification.ipynb   # Main notebook
 ├── data/                          # Dataset (text + images)
 ├── models/                        # Saved models
@@ -99,10 +99,9 @@ TensorBoard logging
 
 ---
 
-🚀 How to Run
+ How to Run
 
 1. Clone the repository:
-
 
 
 git clone https://github.com/your-username/disaster-classification.git
@@ -123,8 +122,8 @@ jupyter notebook
 
 ---
 
-📊 Model Evaluation
-
+ Model Evaluation
+ 
 The project evaluates models using:
 
 Confusion Matrix
@@ -141,7 +140,7 @@ These metrics help understand both accuracy and reliability of predictions.
 
 ---
 
-🧹 Code Cleanup (Comments Removed)
+ Code Cleanup (Comments Removed)
 
 All unnecessary comments have been removed to make the code:
 
@@ -173,8 +172,7 @@ from tensorflow.keras.callbacks import ModelCheckpoint, TerminateOnNaN, Learning
 
 
 ---
-
-💡 Future Improvements
+ Future Improvements
 
 Add more advanced NLP models (BERT, Transformers)
 
@@ -188,7 +186,7 @@ Real-time disaster detection system
 
 ---
 
-🤝 Contributing
+ Contributing
 
 Contributions are welcome! Feel free to:
 
@@ -202,7 +200,7 @@ Submit a pull request
 
 ---
 
-📜 License
+ License
 
 This project is open-source and available under the MIT License.
 
