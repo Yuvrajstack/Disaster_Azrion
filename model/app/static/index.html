@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DisasterGuard AI | Real-time Classification</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="overlay"></div>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <span class="icon">🛡️</span>
+                <h1>DisasterGuard <span>AI</span></h1>
+            </div>
+            <p class="subtitle">Intelligent Real-time Disaster Classification & Live Monitoring</p>
+        </header>
+
+        <main>
+            <section class="visualizer-section">
+                <div class="glass-card camera-container">
+                    <div class="status-badge" id="camera-status">Camera Offline</div>
+                    <video id="webcam" autoplay playsinline></video>
+                    <canvas id="canvas" style="display:none;"></canvas>
+                    <div class="scanner-line"></div>
+                    <div class="controls">
+                        <button id="start-btn" class="btn primary">Start Camera</button>
+                        <button id="capture-btn" class="btn secondary" disabled>Capture & Detect</button>
+                        <label for="file-upload" class="btn outline">
+                            Upload Image
+                            <input type="file" id="file-upload" accept="image/*" hidden>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="glass-card results-container">
+                    <h3>Detection Analysis</h3>
+                    <div id="result-placeholder" class="placeholder">
+                        <div class="loader-icon">🔍</div>
+                        <p>Waiting for visual input...</p>
+                    </div>
+
+                    <div id="prediction-result" class="hidden">
+                        <div class="main-prediction">
+                            <span class="label">Primary Identification:</span>
+                            <h2 id="detected-class">---</h2>
+                            <div class="confidence-meter">
+                                <div class="meter-bar" id="meter-fill"></div>
+                                <span id="confidence-pct">0%</span>
+                            </div>
+                        </div>
+
+
+                        <div class="verification-box">
+                            <p>Is this classification correct?</p>
+                            <div class="v-btns">
+                                <button id="v-correct" class="btn v-btn success">✓ Correct</button>
+                                <button id="v-wrong" class="btn v-btn danger">✗ Incorrect</button>
+                            </div>
+                        </div>
+
+                        <div class="details-grid">
+                            <div class="detail-item">
+                                <span class="d-label">Fire Disaster</span>
+                                <div class="small-meter">
+                                    <div class="fill" id="fill-FireDisaster"></div>
+                                </div>
+                            </div>
+                            <div class="detail-item">
+                                <span class="d-label">Water Disaster</span>
+                                <div class="small-meter">
+                                    <div class="fill" id="fill-WaterDisaster"></div>
+                                </div>
+                            </div>
+                            <div class="detail-item">
+                                <span class="d-label">Infra Damage</span>
+                                <div class="small-meter">
+                                    <div class="fill" id="fill-DamagedInfrastructure"></div>
+                                </div>
+                            </div>
+                            <div class="detail-item">
+                                <span class="d-label">Land Disaster</span>
+                                <div class="small-meter">
+                                    <div class="fill" id="fill-LandDisaster"></div>
+                                </div>
+                            </div>
+                            <div class="detail-item">
+                                <span class="d-label">Human Damage</span>
+                                <div class="small-meter">
+                                    <div class="fill" id="fill-HumanDamage"></div>
+                                </div>
+                            </div>
+                            <div class="detail-item">
+                                <span class="d-label">No Damage</span>
+                                <div class="small-meter">
+                                    <div class="fill" id="fill-NonDamage"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="gallery-section">
+                <div class="glass-card preview-card">
+                    <h4>Current Frame / Upload</h4>
+                    <div id="image-preview" class="preview-box">
+                        <p>No image captured</p>
+                    </div>
+                </div>
+
+                <div class="glass-card preview-card debug-card">
+                    <h4>AI Viewport (Internal Crop)</h4>
+                    <div id="ai-viewport" class="preview-box ai-view">
+                        <p>Waiting for capture...</p>
+                    </div>
+                    <p class="hint">This square is exactly what the model receives.</p>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 DisasterGuard AI Systems. Advanced Rescue Monitoring Interface.</p>
+        </footer>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+
+</html>
