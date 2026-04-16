@@ -1,247 +1,109 @@
-# Disaster_Azrion
+#  DisasterGuard AI - Real-time Disaster Classification
+
+DisasterGuard AI is a premium, deep-learning powered web application designed for real-time disaster monitoring and classification. Leveraging a Convolutional Neural Network (CNN), the system identifies various types of disasters from both uploaded images and live webcam streams with high precision.
 
 ---
 
- Disaster Classification Project
+##  Key Features
 
-This project focuses on building a machine learning and deep learning pipeline to classify disaster-related data. It combines both text-based classification and image-based classification techniques to improve prediction accuracy and provide a robust solution.
-
-
----
-
- Overview
-
-The goal of this project is to:
-
-Classify disaster-related content using Natural Language Processing (NLP)
-
-Analyze images using Deep Learning (CNN - VGG19)
-
-Evaluate model performance using standard metrics
-
-Provide a complete workflow from data preprocessing to model evaluation
-
-
+- **Dual Detection Modes**: Support for high-resolution image uploads and real-time live webcam monitoring.
+- **Intelligent Classification**: Accurately classifies disasters into 6 distinct categories:
+  - Fire Disaster
+  - Water Disaster
+  - Damaged Infrastructure
+  - Land Disaster
+  - Human Damage
+  - Non-Damage (Safe)
+- **Premium UI/UX**: State-of-the-art glassmorphic dashboard featuring:
+  - Dynamic HSL color palettes.
+  - Smooth micro-animations and transitions.
+  - Real-time confidence meters and detailed detection analysis.
+- **Verification System**: Integrated "Human-in-the-Loop" verification allowing users to confirm or report prediction accuracy.
+- **Responsive Design**: Fully optimized for desktop, tablet, and mobile browsers.
 
 ---
 
- Technologies Used
+## Technology Stack
 
-Python 
-
-Pandas & NumPy
-
-Scikit-learn
-
-TensorFlow / Keras
-
-Matplotlib
-
-PIL (Image Processing)
-
-
+- **Backend**: [FastAPI](https://fastapi.tiangolo.com/) (Python 3.10+)
+- **Deep Learning**: [TensorFlow](https://www.tensorflow.org/) & [Keras](https://keras.io/)
+- **Frontend**: Vanilla JavaScript (ES6+), HTML5, CSS3 (Glassmorphism)
+- **Image Processing**: [Pillow](https://python-pillow.org/) & [NumPy](https://numpy.org/)
+- **Server**: [Uvicorn](https://www.uvicorn.org/)
 
 ---
 
- Features
+## Project Structure
 
- Text Classification
-
-TF-IDF Vectorization
-
-Logistic Regression model
-
-Evaluation metrics:
-
-Accuracy
-
-Precision
-
-Recall
-
-F1 Score
-
-ROC-AUC
-
-
-
- Image Classification
-
-Image preprocessing with ImageDataGenerator
-
-Transfer learning using VGG19
-
-Fine-tuning neural network layers
-
-Callbacks for training optimization:
-
-EarlyStopping
-
-ReduceLROnPlateau
-
-ModelCheckpoint
-
-TensorBoard logging
-
-
-
+```text
+├── app/
+│   ├── main.py              # FastAPI Backend & Model Inference
+│   └── static/
+│       ├── index.html       # Dashboard Structure
+│       ├── style.css        # Premium Design System
+│       └── script.js        # Webcam & API Integration
+├── model/
+│   └── image_classification_model.h5  # Pre-trained CNN Model
+└── README.md
+```
 
 ---
 
- Project Structure
- 
-├── disaster-classification.ipynb   # Main notebook
-├── data/                          # Dataset (text + images)
-├── models/                        # Saved models
-├── logs/                          # Training logs
-└── README.md                      # Project documentation
+## Installation
 
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/yourusername/disasterguard-ai.git
+   cd disasterguard-ai
+   ```
 
----
+2. **Install dependencies**:
+   ```bash
+   pip install fastapi uvicorn tensorflow pillow numpy
+   ```
 
- How to Run
-
-1. Clone the repository:
-
-
-git clone https://github.com/your-username/disaster-classification.git
-cd disaster-classification
-
-2. Install dependencies:
-
-
-
-pip install -r requirements.txt
-
-3. Run the notebook:
-
-
-
-jupyter notebook
-
+3. **Configure Model Path**:
+   Ensure your `.h5` model file is located in the correct directory requested in `app/main.py`.
 
 ---
 
- Model Evaluation
- 
-The project evaluates models using:
+##  Usage
 
-Confusion Matrix
+1. **Start the server**:
+   ```bash
+   python app/main.py
+   ```
 
-Classification Report
+2. **Access the Dashboard**:
+   Open your browser and navigate to `http://localhost:8000`.
 
-ROC Curve
-
-AUC Score
-
-
-These metrics help understand both accuracy and reliability of predictions.
-
+3. **Classify**:
+   - Use the **"Upload Image"** button to analyze existing photos.
+   - Click **"Start Camera"** and **"Capture & Detect"** for live monitoring.
 
 ---
 
- Code Cleanup (Comments Removed)
+## Model Details
 
-All unnecessary comments have been removed to make the code:
+The core of DisasterGuard AI is a CNN model trained on a comprehensive disaster dataset. 
 
-Cleaner
-
-Easier to read
-
-More professional for GitHub
-
-
-Example cleaned import block:
-
-import pandas as pd
-import numpy as np
-import os
-import zipfile
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import accuracy_score, classification_report, confusion_matrix, precision_score, recall_score, f1_score, roc_auc_score, roc_curve, auc
-import matplotlib.pyplot as plt
-from PIL import Image, ImageFile
-ImageFile.LOAD_TRUNCATED_IMAGES = True
-import tensorflow as tf
-from tensorflow.keras.preprocessing.image import ImageDataGenerator
-from tensorflow.keras.applications import VGG19
-from tensorflow.keras.layers import Dense, Flatten
-from tensorflow.keras.models import Model
-from tensorflow.keras.callbacks import ModelCheckpoint, TerminateOnNaN, LearningRateScheduler, CSVLogger, TensorBoard, ReduceLROnPlateau, EarlyStopping
-
-
----
- Future Improvements
-
-Add more advanced NLP models (BERT, Transformers)
-
-Improve dataset quality and size
-
-Deploy as a web application (Flask / Streamlit)
-
-Real-time disaster detection system
-
-
+- **Input Shape**: 150x150 pixels (RGB)
+- **Normalization**: Pixel values rescaled to [0, 1]
+- **Architecture**: Sequential CNN with multiple Convolutional and Pooling layers.
+- **Output**: Softmax activation providing confidence scores across 6 disaster classes.
 
 ---
 
- Contributing
+## License
 
-Contributions are welcome! Feel free to:
-
-Fork the repo
-
-Create a new branch
-
-Submit a pull request
-
-
+This project is licensed under the MIT License - see the LICENSE file for details.
 
 ---
 
- License
+## Contributing
 
-This project is open-source and available under the MIT License.
-
+Contributions are welcome! Please feel free to submit a Pull Request.
 
 ---
 
-If you want, I can also:
-
-Convert your notebook into a clean .py script
-
-Create a requirements.txt automatically
-
-Or design a GitHub profile-style README with badges and visuals
-import numpy as np
-from tensorflow.keras.models import load_model
-from tensorflow.keras.preprocessing import image
-
-# 1️⃣ Load your trained model
-model = load_model('/kaggle/working/image_classification_model.h5')
-
-# 2️⃣ Define class labels (IMPORTANT)
-class_labels = list(train_generator.class_indices.keys())
-
-# 3️⃣ Load and preprocess image
-img_path = '/kaggle/input/YOUR_DATASET/test.jpg'   # change this
-
-img = image.load_img(img_path, target_size=(224, 224))  # MUST match training size
-img_array = image.img_to_array(img)
-
-# Same preprocessing as training
-img_array = img_array / 255.0
-img_array = np.expand_dims(img_array, axis=0)
-
-# 4️⃣ Prediction
-prediction = model.predict(img_array)
-
-# 5️⃣ Get class
-predicted_index = np.argmax(prediction)
-predicted_label = class_labels[predicted_index]
-
-# 6️⃣ Output
-print("Predicted Class Index:", predicted_index)
-print("Predicted Label:", predicted_label)
-print("Confidence:", np.max(prediction))
+*Developed with  for Advanced Safety & Monitoring.*
