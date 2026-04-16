@@ -214,3 +214,34 @@ Convert your notebook into a clean .py script
 Create a requirements.txt automatically
 
 Or design a GitHub profile-style README with badges and visuals
+import numpy as np
+from tensorflow.keras.models import load_model
+from tensorflow.keras.preprocessing import image
+
+# 1️⃣ Load your trained model
+model = load_model('/kaggle/working/image_classification_model.h5')
+
+# 2️⃣ Define class labels (IMPORTANT)
+class_labels = list(train_generator.class_indices.keys())
+
+# 3️⃣ Load and preprocess image
+img_path = '/kaggle/input/YOUR_DATASET/test.jpg'   # change this
+
+img = image.load_img(img_path, target_size=(224, 224))  # MUST match training size
+img_array = image.img_to_array(img)
+
+# Same preprocessing as training
+img_array = img_array / 255.0
+img_array = np.expand_dims(img_array, axis=0)
+
+# 4️⃣ Prediction
+prediction = model.predict(img_array)
+
+# 5️⃣ Get class
+predicted_index = np.argmax(prediction)
+predicted_label = class_labels[predicted_index]
+
+# 6️⃣ Output
+print("Predicted Class Index:", predicted_index)
+print("Predicted Label:", predicted_label)
+print("Confidence:", np.max(prediction))
